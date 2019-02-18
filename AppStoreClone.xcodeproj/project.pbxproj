@@ -16,6 +16,8 @@
 		B603D777221AFFFA00E9E594 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D776221AFFFA00E9E594 /* BaseTabBarController.swift */; };
 		B603D77A221B08AA00E9E594 /* AppsSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D779221B08AA00E9E594 /* AppsSearchVC.swift */; };
 		B603D77D221B0E8700E9E594 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D77C221B0E8700E9E594 /* SearchResultCell.swift */; };
+		B603D780221B157800E9E594 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D77F221B157800E9E594 /* UIView+Layout.swift */; };
+		B603D782221B19CE00E9E594 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D781221B19CE00E9E594 /* VerticalStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		B603D776221AFFFA00E9E594 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		B603D779221B08AA00E9E594 /* AppsSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsSearchVC.swift; sourceTree = "<group>"; };
 		B603D77C221B0E8700E9E594 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		B603D77F221B157800E9E594 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		B603D781221B19CE00E9E594 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 		B603D755221AFCC300E9E594 /* AppStoreClone */ = {
 			isa = PBXGroup;
 			children = (
+				B603D77E221B14FC00E9E594 /* Helpers */,
 				B603D77B221B0E5E00E9E594 /* Views */,
 				B603D778221B088200E9E594 /* Controller */,
 				B603D756221AFCC300E9E594 /* AppDelegate.swift */,
@@ -119,6 +124,15 @@
 				B603D77C221B0E8700E9E594 /* SearchResultCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B603D77E221B14FC00E9E594 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B603D77F221B157800E9E594 /* UIView+Layout.swift */,
+				B603D781221B19CE00E9E594 /* VerticalStackView.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,9 +238,11 @@
 			files = (
 				B603D77A221B08AA00E9E594 /* AppsSearchVC.swift in Sources */,
 				B603D759221AFCC300E9E594 /* ViewController.swift in Sources */,
+				B603D780221B157800E9E594 /* UIView+Layout.swift in Sources */,
 				B603D757221AFCC300E9E594 /* AppDelegate.swift in Sources */,
 				B603D777221AFFFA00E9E594 /* BaseTabBarController.swift in Sources */,
 				B603D77D221B0E8700E9E594 /* SearchResultCell.swift in Sources */,
+				B603D782221B19CE00E9E594 /* VerticalStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
