@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class AppsSearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate{
+class AppsSearchVC: BaseListVC, UICollectionViewDelegateFlowLayout, UISearchBarDelegate{
     
     var timer: Timer?
     
@@ -73,14 +73,6 @@ class AppsSearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.frame.width, height: 350)
-    }
-    
-    init() {
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

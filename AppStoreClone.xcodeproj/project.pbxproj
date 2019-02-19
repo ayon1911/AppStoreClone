@@ -22,6 +22,10 @@
 		B603D782221B19CE00E9E594 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D781221B19CE00E9E594 /* VerticalStackView.swift */; };
 		B603D785221BE9C500E9E594 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D784221BE9C500E9E594 /* SearchResult.swift */; };
 		B603D788221BEDBD00E9E594 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D787221BEDBD00E9E594 /* Service.swift */; };
+		B6DCE270221C36E100294C3C /* AppsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE26F221C36E100294C3C /* AppsVC.swift */; };
+		B6DCE273221C377100294C3C /* BaseListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE272221C377100294C3C /* BaseListVC.swift */; };
+		B6DCE277221C397A00294C3C /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE276221C397900294C3C /* AppsGroupCell.swift */; };
+		B6DCE279221C3C1D00294C3C /* AppsHorizontalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE278221C3C1D00294C3C /* AppsHorizontalVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 		B603D781221B19CE00E9E594 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		B603D784221BE9C500E9E594 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		B603D787221BEDBD00E9E594 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		B6DCE26F221C36E100294C3C /* AppsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsVC.swift; sourceTree = "<group>"; };
+		B6DCE272221C377100294C3C /* BaseListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListVC.swift; sourceTree = "<group>"; };
+		B6DCE276221C397900294C3C /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
+		B6DCE278221C3C1D00294C3C /* AppsHorizontalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalVC.swift; sourceTree = "<group>"; };
 		F69FAE6ABCA57CE6ABC2B22C /* Pods_AppStoreCloneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreCloneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -141,8 +149,10 @@
 		B603D778221B088200E9E594 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B6DCE274221C38B600294C3C /* Search */,
+				B6DCE271221C36E500294C3C /* Apps */,
 				B603D776221AFFFA00E9E594 /* BaseTabBarController.swift */,
-				B603D779221B08AA00E9E594 /* AppsSearchVC.swift */,
+				B6DCE272221C377100294C3C /* BaseListVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -150,6 +160,7 @@
 		B603D77B221B0E5E00E9E594 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B6DCE275221C396900294C3C /* Apps */,
 				B603D77C221B0E8700E9E594 /* SearchResultCell.swift */,
 			);
 			path = Views;
@@ -178,6 +189,31 @@
 				B603D787221BEDBD00E9E594 /* Service.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		B6DCE271221C36E500294C3C /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				B6DCE26F221C36E100294C3C /* AppsVC.swift */,
+				B6DCE278221C3C1D00294C3C /* AppsHorizontalVC.swift */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		B6DCE274221C38B600294C3C /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B603D779221B08AA00E9E594 /* AppsSearchVC.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		B6DCE275221C396900294C3C /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				B6DCE276221C397900294C3C /* AppsGroupCell.swift */,
+			);
+			path = Apps;
 			sourceTree = "<group>";
 		};
 		DDAD4BFC1899245537E3B98E /* Frameworks */ = {
@@ -401,11 +437,15 @@
 				B603D77A221B08AA00E9E594 /* AppsSearchVC.swift in Sources */,
 				B603D759221AFCC300E9E594 /* ViewController.swift in Sources */,
 				B603D785221BE9C500E9E594 /* SearchResult.swift in Sources */,
+				B6DCE279221C3C1D00294C3C /* AppsHorizontalVC.swift in Sources */,
 				B603D780221B157800E9E594 /* UIView+Layout.swift in Sources */,
 				B603D757221AFCC300E9E594 /* AppDelegate.swift in Sources */,
 				B603D788221BEDBD00E9E594 /* Service.swift in Sources */,
+				B6DCE273221C377100294C3C /* BaseListVC.swift in Sources */,
+				B6DCE277221C397A00294C3C /* AppsGroupCell.swift in Sources */,
 				B603D777221AFFFA00E9E594 /* BaseTabBarController.swift in Sources */,
 				B603D77D221B0E8700E9E594 /* SearchResultCell.swift in Sources */,
+				B6DCE270221C36E100294C3C /* AppsVC.swift in Sources */,
 				B603D782221B19CE00E9E594 /* VerticalStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,7 +612,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UHJSHJ73VS;
 				INFOPLIST_FILE = AppStoreClone/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayon.AppStoreClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -588,7 +631,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UHJSHJ73VS;
 				INFOPLIST_FILE = AppStoreClone/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayon.AppStoreClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -605,7 +651,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UHJSHJ73VS;
 				INFOPLIST_FILE = AppStoreCloneTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayon.AppStoreCloneTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -623,7 +673,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UHJSHJ73VS;
 				INFOPLIST_FILE = AppStoreCloneTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayon.AppStoreCloneTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
