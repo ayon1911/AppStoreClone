@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 class AppsSearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    fileprivate var appResult = [Result]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,31 +23,25 @@ class AppsSearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     }
     
     fileprivate func fetchItunesApps() {
-        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
-        let url = URL(string: urlString)
-        
-        URLSession.shared.dataTask(with: url!) { (data, res, error) in
+        Service.shared.fetchApps { (results, error) in
             if let err = error {
                 print(err.localizedDescription)
                 return
             }
-            guard let data = data else { return }
-            do {
-            let searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
-                searchResult.results.forEach({ print($0.trackName, $0.primaryGenreName) })
-            } catch {
-                print(error.localizedDescription)
+            self.appResult = results
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
             }
-        }.resume()
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return appResult.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCell.cellID, for: indexPath) as! SearchResultCell
-        cell.nameLable.text = "Hear is my app name"
+        cell.appResult = appResult[indexPath.item]
         return cell
     }
     

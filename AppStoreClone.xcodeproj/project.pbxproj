@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F312EB4C30050488F758B26 /* Pods_AppStoreCloneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69FAE6ABCA57CE6ABC2B22C /* Pods_AppStoreCloneTests.framework */; };
+		646995B624D40689E5EE2042 /* Pods_AppStoreClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981097651E5DEFEB5D62C1CE /* Pods_AppStoreClone.framework */; };
 		B603D757221AFCC300E9E594 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D756221AFCC300E9E594 /* AppDelegate.swift */; };
 		B603D759221AFCC300E9E594 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D758221AFCC300E9E594 /* ViewController.swift */; };
 		B603D75C221AFCC300E9E594 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B603D75A221AFCC300E9E594 /* Main.storyboard */; };
@@ -19,6 +21,7 @@
 		B603D780221B157800E9E594 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D77F221B157800E9E594 /* UIView+Layout.swift */; };
 		B603D782221B19CE00E9E594 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D781221B19CE00E9E594 /* VerticalStackView.swift */; };
 		B603D785221BE9C500E9E594 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D784221BE9C500E9E594 /* SearchResult.swift */; };
+		B603D788221BEDBD00E9E594 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D787221BEDBD00E9E594 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +35,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F19996F3B6664514292E762 /* Pods-AppStoreCloneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreCloneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppStoreCloneTests/Pods-AppStoreCloneTests.debug.xcconfig"; sourceTree = "<group>"; };
+		97ED9451786ADB1598D49E74 /* Pods-AppStoreClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreClone.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppStoreClone/Pods-AppStoreClone.release.xcconfig"; sourceTree = "<group>"; };
+		981097651E5DEFEB5D62C1CE /* Pods_AppStoreClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99300FF4F9608166B39D46F5 /* Pods-AppStoreCloneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreCloneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppStoreCloneTests/Pods-AppStoreCloneTests.release.xcconfig"; sourceTree = "<group>"; };
+		ADC6129EAE5D2C82EFDF21AA /* Pods-AppStoreClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppStoreClone/Pods-AppStoreClone.debug.xcconfig"; sourceTree = "<group>"; };
 		B603D753221AFCC300E9E594 /* AppStoreClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B603D756221AFCC300E9E594 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B603D758221AFCC300E9E594 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +56,8 @@
 		B603D77F221B157800E9E594 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		B603D781221B19CE00E9E594 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		B603D784221BE9C500E9E594 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		B603D787221BEDBD00E9E594 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		F69FAE6ABCA57CE6ABC2B22C /* Pods_AppStoreCloneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreCloneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				646995B624D40689E5EE2042 /* Pods_AppStoreClone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,18 +73,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F312EB4C30050488F758B26 /* Pods_AppStoreCloneTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45BCC1B5223805E5F60A6B25 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ADC6129EAE5D2C82EFDF21AA /* Pods-AppStoreClone.debug.xcconfig */,
+				97ED9451786ADB1598D49E74 /* Pods-AppStoreClone.release.xcconfig */,
+				4F19996F3B6664514292E762 /* Pods-AppStoreCloneTests.debug.xcconfig */,
+				99300FF4F9608166B39D46F5 /* Pods-AppStoreCloneTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B603D74A221AFCC300E9E594 = {
 			isa = PBXGroup;
 			children = (
 				B603D755221AFCC300E9E594 /* AppStoreClone */,
 				B603D76A221AFCC400E9E594 /* AppStoreCloneTests */,
 				B603D754221AFCC300E9E594 /* Products */,
+				45BCC1B5223805E5F60A6B25 /* Pods */,
+				DDAD4BFC1899245537E3B98E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +114,7 @@
 		B603D755221AFCC300E9E594 /* AppStoreClone */ = {
 			isa = PBXGroup;
 			children = (
+				B603D786221BEDA800E9E594 /* Service */,
 				B603D783221BE9B200E9E594 /* Model */,
 				B603D77E221B14FC00E9E594 /* Helpers */,
 				B603D77B221B0E5E00E9E594 /* Views */,
@@ -146,6 +172,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B603D786221BEDA800E9E594 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B603D787221BEDBD00E9E594 /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		DDAD4BFC1899245537E3B98E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				981097651E5DEFEB5D62C1CE /* Pods_AppStoreClone.framework */,
+				F69FAE6ABCA57CE6ABC2B22C /* Pods_AppStoreCloneTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,9 +196,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B603D770221AFCC400E9E594 /* Build configuration list for PBXNativeTarget "AppStoreClone" */;
 			buildPhases = (
+				5E82DF4480981FF5627C0C38 /* [CP] Check Pods Manifest.lock */,
 				B603D74F221AFCC300E9E594 /* Sources */,
 				B603D750221AFCC300E9E594 /* Frameworks */,
 				B603D751221AFCC300E9E594 /* Resources */,
+				78A067CD92CA0745C83B5EB0 /* [CP] Embed Pods Frameworks */,
+				90BC161DAF540CD7EB5DD3C9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B603D773221AFCC400E9E594 /* Build configuration list for PBXNativeTarget "AppStoreCloneTests" */;
 			buildPhases = (
+				FAF13313E72C30D5C40FED82 /* [CP] Check Pods Manifest.lock */,
 				B603D763221AFCC400E9E594 /* Sources */,
 				B603D764221AFCC400E9E594 /* Frameworks */,
 				B603D765221AFCC400E9E594 /* Resources */,
+				B80A55541E6312B7DCDC7DBA /* [CP] Embed Pods Frameworks */,
+				C7B99A20841EC67963640DF9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,6 +291,108 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5E82DF4480981FF5627C0C38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppStoreClone-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78A067CD92CA0745C83B5EB0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AppStoreClone/Pods-AppStoreClone-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppStoreClone/Pods-AppStoreClone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90BC161DAF540CD7EB5DD3C9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppStoreClone/Pods-AppStoreClone-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B80A55541E6312B7DCDC7DBA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppStoreCloneTests/Pods-AppStoreCloneTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7B99A20841EC67963640DF9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppStoreCloneTests/Pods-AppStoreCloneTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAF13313E72C30D5C40FED82 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppStoreCloneTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B603D74F221AFCC300E9E594 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -252,6 +403,7 @@
 				B603D785221BE9C500E9E594 /* SearchResult.swift in Sources */,
 				B603D780221B157800E9E594 /* UIView+Layout.swift in Sources */,
 				B603D757221AFCC300E9E594 /* AppDelegate.swift in Sources */,
+				B603D788221BEDBD00E9E594 /* Service.swift in Sources */,
 				B603D777221AFFFA00E9E594 /* BaseTabBarController.swift in Sources */,
 				B603D77D221B0E8700E9E594 /* SearchResultCell.swift in Sources */,
 				B603D782221B19CE00E9E594 /* VerticalStackView.swift in Sources */,
@@ -414,15 +566,13 @@
 		};
 		B603D771221AFCC400E9E594 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADC6129EAE5D2C82EFDF21AA /* Pods-AppStoreClone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UHJSHJ73VS;
 				INFOPLIST_FILE = AppStoreClone/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayon.AppStoreClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -432,15 +582,13 @@
 		};
 		B603D772221AFCC400E9E594 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97ED9451786ADB1598D49E74 /* Pods-AppStoreClone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UHJSHJ73VS;
 				INFOPLIST_FILE = AppStoreClone/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayon.AppStoreClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -450,17 +598,14 @@
 		};
 		B603D774221AFCC400E9E594 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F19996F3B6664514292E762 /* Pods-AppStoreCloneTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UHJSHJ73VS;
 				INFOPLIST_FILE = AppStoreCloneTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayon.AppStoreCloneTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -471,17 +616,14 @@
 		};
 		B603D775221AFCC400E9E594 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99300FF4F9608166B39D46F5 /* Pods-AppStoreCloneTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UHJSHJ73VS;
 				INFOPLIST_FILE = AppStoreCloneTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayon.AppStoreCloneTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
