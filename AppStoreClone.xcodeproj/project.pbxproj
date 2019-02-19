@@ -26,6 +26,8 @@
 		B6DCE273221C377100294C3C /* BaseListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE272221C377100294C3C /* BaseListVC.swift */; };
 		B6DCE277221C397A00294C3C /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE276221C397900294C3C /* AppsGroupCell.swift */; };
 		B6DCE279221C3C1D00294C3C /* AppsHorizontalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE278221C3C1D00294C3C /* AppsHorizontalVC.swift */; };
+		B6DCE27B221C43A000294C3C /* AppRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE27A221C43A000294C3C /* AppRowCell.swift */; };
+		B6DCE27D221C443D00294C3C /* Extentiosn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE27C221C443D00294C3C /* Extentiosn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		B6DCE272221C377100294C3C /* BaseListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListVC.swift; sourceTree = "<group>"; };
 		B6DCE276221C397900294C3C /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
 		B6DCE278221C3C1D00294C3C /* AppsHorizontalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalVC.swift; sourceTree = "<group>"; };
+		B6DCE27A221C43A000294C3C /* AppRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRowCell.swift; sourceTree = "<group>"; };
+		B6DCE27C221C443D00294C3C /* Extentiosn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentiosn.swift; sourceTree = "<group>"; };
 		F69FAE6ABCA57CE6ABC2B22C /* Pods_AppStoreCloneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreCloneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -171,6 +175,7 @@
 			children = (
 				B603D77F221B157800E9E594 /* UIView+Layout.swift */,
 				B603D781221B19CE00E9E594 /* VerticalStackView.swift */,
+				B6DCE27C221C443D00294C3C /* Extentiosn.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				B6DCE276221C397900294C3C /* AppsGroupCell.swift */,
+				B6DCE27A221C43A000294C3C /* AppRowCell.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -440,11 +446,13 @@
 				B6DCE279221C3C1D00294C3C /* AppsHorizontalVC.swift in Sources */,
 				B603D780221B157800E9E594 /* UIView+Layout.swift in Sources */,
 				B603D757221AFCC300E9E594 /* AppDelegate.swift in Sources */,
+				B6DCE27B221C43A000294C3C /* AppRowCell.swift in Sources */,
 				B603D788221BEDBD00E9E594 /* Service.swift in Sources */,
 				B6DCE273221C377100294C3C /* BaseListVC.swift in Sources */,
 				B6DCE277221C397A00294C3C /* AppsGroupCell.swift in Sources */,
 				B603D777221AFFFA00E9E594 /* BaseTabBarController.swift in Sources */,
 				B603D77D221B0E8700E9E594 /* SearchResultCell.swift in Sources */,
+				B6DCE27D221C443D00294C3C /* Extentiosn.swift in Sources */,
 				B6DCE270221C36E100294C3C /* AppsVC.swift in Sources */,
 				B603D782221B19CE00E9E594 /* VerticalStackView.swift in Sources */,
 			);
