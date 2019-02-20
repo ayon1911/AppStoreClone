@@ -31,6 +31,7 @@
 		B6DCE27F221C4B6800294C3C /* AppsPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE27E221C4B6800294C3C /* AppsPageHeader.swift */; };
 		B6DCE281221C4CAB00294C3C /* AppsHeaderHorizontalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE280221C4CAB00294C3C /* AppsHeaderHorizontalVC.swift */; };
 		B6DCE283221C4E0100294C3C /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE282221C4E0100294C3C /* AppsHeaderCell.swift */; };
+		B6DCE285221D499C00294C3C /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE284221D499C00294C3C /* AppGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		B6DCE27E221C4B6800294C3C /* AppsPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageHeader.swift; sourceTree = "<group>"; };
 		B6DCE280221C4CAB00294C3C /* AppsHeaderHorizontalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalVC.swift; sourceTree = "<group>"; };
 		B6DCE282221C4E0100294C3C /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
+		B6DCE284221D499C00294C3C /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		F69FAE6ABCA57CE6ABC2B22C /* Pods_AppStoreCloneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreCloneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				B603D784221BE9C500E9E594 /* SearchResult.swift */,
+				B6DCE284221D499C00294C3C /* AppGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				B603D77A221B08AA00E9E594 /* AppsSearchVC.swift in Sources */,
 				B6DCE281221C4CAB00294C3C /* AppsHeaderHorizontalVC.swift in Sources */,
 				B603D759221AFCC300E9E594 /* ViewController.swift in Sources */,
+				B6DCE285221D499C00294C3C /* AppGroup.swift in Sources */,
 				B603D785221BE9C500E9E594 /* SearchResult.swift in Sources */,
 				B6DCE283221C4E0100294C3C /* AppsHeaderCell.swift in Sources */,
 				B6DCE279221C3C1D00294C3C /* AppsHorizontalVC.swift in Sources */,

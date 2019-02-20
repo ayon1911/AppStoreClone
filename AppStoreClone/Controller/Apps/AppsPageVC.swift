@@ -19,6 +19,18 @@ class AppsPageVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: AppsGroupCell.cellID)
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
+        
+        fetchData()
+    }
+    
+    fileprivate func fetchData() {
+        Service.shared.fetchGames { (appGroup, error) in
+            if let err = error {
+                print(err.localizedDescription)
+                return
+            }
+            
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
