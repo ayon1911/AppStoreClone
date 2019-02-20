@@ -10,6 +10,8 @@ import UIKit
 
 class AppsHeaderHorizontalVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     
+    var socialApps = [SocialApp]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,12 +23,14 @@ class AppsHeaderHorizontalVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return socialApps.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppsHeaderCell.cellID, for: indexPath) 
-//        cell.backgroundColor = .red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppsHeaderCell.cellID, for: indexPath) as! AppsHeaderCell
+        cell.companyLabel.text = socialApps[indexPath.item].name
+        cell.titlelabel.text = socialApps[indexPath.item].tagline
+        cell.imageView.sd_setImage(with: URL(string: socialApps[indexPath.item].imageUrl), completed: nil)
         return cell
     }
     
