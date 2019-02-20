@@ -11,6 +11,7 @@ import UIKit
 class AppsPageVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     
     let headerID = "headerId"
+    var editorsChoiseGame: AppGroup?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,10 @@ class AppsPageVC: BaseListVC, UICollectionViewDelegateFlowLayout {
                 print(err.localizedDescription)
                 return
             }
-            
+            self.editorsChoiseGame = appGroup
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -43,11 +47,14 @@ class AppsPageVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppsGroupCell.cellID, for: indexPath) as! AppsGroupCell
+        cell.appSectionTitlelabel.text = editorsChoiseGame?.feed.title
+        cell.horizontalVC.appGroup = editorsChoiseGame
+        cell.horizontalVC.collectionView.reloadData()
         return cell
     }
     
