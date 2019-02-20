@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppsHorizontalVC: BaseListVC, UICollectionViewDelegateFlowLayout {
+class AppsHorizontalVC: HorizontalSnappingVC, UICollectionViewDelegateFlowLayout {
     
     let topBottomPadding: CGFloat = 12
     let lineSpacing: CGFloat = 12
@@ -20,10 +20,7 @@ class AppsHorizontalVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         
         collectionView.register(AppRowCell.self, forCellWithReuseIdentifier: AppRowCell.cellID)
         collectionView.backgroundColor = .white
-        
-        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = .horizontal
-        }
+        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -48,7 +45,7 @@ class AppsHorizontalVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         return CGSize.init(width: view.frame.width - 48, height: height)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.init(top: topBottomPadding, left: 16, bottom: topBottomPadding, right: 16)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets.init(top: topBottomPadding, left: 16, bottom: topBottomPadding, right: 16)
+//    }
 }

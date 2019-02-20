@@ -33,6 +33,7 @@
 		B6DCE283221C4E0100294C3C /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE282221C4E0100294C3C /* AppsHeaderCell.swift */; };
 		B6DCE285221D499C00294C3C /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE284221D499C00294C3C /* AppGroup.swift */; };
 		B6DCE287221D660D00294C3C /* SocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE286221D660D00294C3C /* SocialApp.swift */; };
+		B6FB5A79221D8DE10080F20F /* HorizontalSnappingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FB5A78221D8DE10080F20F /* HorizontalSnappingVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		B6DCE282221C4E0100294C3C /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
 		B6DCE284221D499C00294C3C /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		B6DCE286221D660D00294C3C /* SocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialApp.swift; sourceTree = "<group>"; };
+		B6FB5A78221D8DE10080F20F /* HorizontalSnappingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingVC.swift; sourceTree = "<group>"; };
 		F69FAE6ABCA57CE6ABC2B22C /* Pods_AppStoreCloneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreCloneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -167,6 +169,7 @@
 				B6DCE271221C36E500294C3C /* Apps */,
 				B603D776221AFFFA00E9E594 /* BaseTabBarController.swift */,
 				B6DCE272221C377100294C3C /* BaseListVC.swift */,
+				B6FB5A78221D8DE10080F20F /* HorizontalSnappingVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				B603D759221AFCC300E9E594 /* ViewController.swift in Sources */,
 				B6DCE285221D499C00294C3C /* AppGroup.swift in Sources */,
 				B603D785221BE9C500E9E594 /* SearchResult.swift in Sources */,
+				B6FB5A79221D8DE10080F20F /* HorizontalSnappingVC.swift in Sources */,
 				B6DCE283221C4E0100294C3C /* AppsHeaderCell.swift in Sources */,
 				B6DCE279221C3C1D00294C3C /* AppsHorizontalVC.swift in Sources */,
 				B603D780221B157800E9E594 /* UIView+Layout.swift in Sources */,
