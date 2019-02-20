@@ -53,7 +53,7 @@ class AppsSearchVC: BaseListVC, UICollectionViewDelegateFlowLayout, UISearchBarD
                 print(err.localizedDescription)
                 return
             }
-            self.appResult = results
+            self.appResult = results?.results ?? []
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -79,7 +79,7 @@ class AppsSearchVC: BaseListVC, UICollectionViewDelegateFlowLayout, UISearchBarD
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
             Service.shared.fetchApps(searchTerm: searchText) { (results, error) in
-                self.appResult = results
+                self.appResult = results?.results ?? []
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
