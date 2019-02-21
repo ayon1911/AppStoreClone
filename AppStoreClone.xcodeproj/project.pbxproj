@@ -23,6 +23,7 @@
 		B603D785221BE9C500E9E594 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D784221BE9C500E9E594 /* SearchResult.swift */; };
 		B603D788221BEDBD00E9E594 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D787221BEDBD00E9E594 /* Service.swift */; };
 		B658785F221EA3F00016A25C /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B658785E221EA3F00016A25C /* AppDetailController.swift */; };
+		B6587862221EC7E40016A25C /* AppDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6587861221EC7E40016A25C /* AppDetailCell.swift */; };
 		B6DCE270221C36E100294C3C /* AppsPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE26F221C36E100294C3C /* AppsPageVC.swift */; };
 		B6DCE273221C377100294C3C /* BaseListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE272221C377100294C3C /* BaseListVC.swift */; };
 		B6DCE277221C397A00294C3C /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE276221C397900294C3C /* AppsGroupCell.swift */; };
@@ -72,6 +73,7 @@
 		B603D784221BE9C500E9E594 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		B603D787221BEDBD00E9E594 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		B658785E221EA3F00016A25C /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
+		B6587861221EC7E40016A25C /* AppDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailCell.swift; sourceTree = "<group>"; };
 		B6DCE26F221C36E100294C3C /* AppsPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageVC.swift; sourceTree = "<group>"; };
 		B6DCE272221C377100294C3C /* BaseListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListVC.swift; sourceTree = "<group>"; };
 		B6DCE276221C397900294C3C /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		B603D77B221B0E5E00E9E594 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B6587860221EC7C20016A25C /* Details */,
 				B6DCE275221C396900294C3C /* Apps */,
 				B603D77C221B0E8700E9E594 /* SearchResultCell.swift */,
 			);
@@ -221,6 +224,14 @@
 			isa = PBXGroup;
 			children = (
 				B658785E221EA3F00016A25C /* AppDetailController.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		B6587860221EC7C20016A25C /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				B6587861221EC7E40016A25C /* AppDetailCell.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -482,6 +493,7 @@
 				B6FB5A79221D8DE10080F20F /* HorizontalSnappingVC.swift in Sources */,
 				B6DCE283221C4E0100294C3C /* AppsHeaderCell.swift in Sources */,
 				B6DCE279221C3C1D00294C3C /* AppsHorizontalVC.swift in Sources */,
+				B6587862221EC7E40016A25C /* AppDetailCell.swift in Sources */,
 				B603D780221B157800E9E594 /* UIView+Layout.swift in Sources */,
 				B603D757221AFCC300E9E594 /* AppDelegate.swift in Sources */,
 				B6DCE27B221C43A000294C3C /* AppRowCell.swift in Sources */,

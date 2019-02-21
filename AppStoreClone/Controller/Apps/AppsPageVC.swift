@@ -121,6 +121,7 @@ class AppsPageVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         cell.horizontalVC.appGroup = appGroup
         cell.horizontalVC.didSelectHandler = { [weak self] feedResult in
             let vc = AppDetailController()
+            vc.appId = feedResult.id
             vc.navigationItem.title = feedResult.name
             self?.navigationController?.pushViewController(vc, animated: true)
         }
