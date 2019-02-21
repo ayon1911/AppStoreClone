@@ -119,6 +119,11 @@ class AppsPageVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         let appGroup = groups[indexPath.item]
         cell.appSectionTitlelabel.text = appGroup.feed.title
         cell.horizontalVC.appGroup = appGroup
+        cell.horizontalVC.didSelectHandler = { [weak self] feedResult in
+            let vc = AppDetailController()
+            vc.navigationItem.title = feedResult.name
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
         cell.horizontalVC.collectionView.reloadData()
         return cell
     }
@@ -130,4 +135,5 @@ class AppsPageVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .init(top: 16, left: 0, bottom: 0, right: 0)
     }
+    
 }

@@ -14,6 +14,7 @@ class AppsHorizontalVC: HorizontalSnappingVC, UICollectionViewDelegateFlowLayout
     let lineSpacing: CGFloat = 12
     
     var appGroup: AppGroup?
+    var didSelectHandler: ((FeedResult) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,11 @@ class AppsHorizontalVC: HorizontalSnappingVC, UICollectionViewDelegateFlowLayout
         collectionView.register(AppRowCell.self, forCellWithReuseIdentifier: AppRowCell.cellID)
         collectionView.backgroundColor = .white
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let app = appGroup?.feed.results[indexPath.item] else { return }
+        didSelectHandler?(app)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
