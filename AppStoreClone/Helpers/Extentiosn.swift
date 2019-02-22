@@ -39,3 +39,9 @@ extension UIStackView {
         self.spacing = customSpacing
     }
 }
+
+extension UICollectionViewCell {
+    static var cellID: String {
+        return String(describing: self)
+    }
+}

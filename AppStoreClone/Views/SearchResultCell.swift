@@ -105,9 +105,3 @@ class SearchResultCell: UICollectionViewCell {
     }
     
 }
-
-extension UICollectionViewCell {
-    static var cellID: String {
-        return String(describing: self)
-    }
-}

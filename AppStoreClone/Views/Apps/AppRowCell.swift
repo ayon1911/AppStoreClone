@@ -27,7 +27,7 @@ class AppRowCell: UICollectionViewCell {
         
         imageView.constrainWidth(constant: 64)
         imageView.constrainHeight(constant: 64)
-        imageView.backgroundColor = .purple
+//        imageView.backgroundColor = .purple
         
         let stackView = UIStackView(arrangedSubviews: [
                 imageView, VerticalStackView(arrangedSubViews: [nameLable, companyLabel], spacing: 4), getButton
