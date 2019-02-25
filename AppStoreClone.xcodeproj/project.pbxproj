@@ -30,6 +30,7 @@
 		B687BA3B22205710001C33CD /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B687BA3A22205710001C33CD /* PreviewCell.swift */; };
 		B687BA3D22205901001C33CD /* PreviewScreenshotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B687BA3C22205901001C33CD /* PreviewScreenshotController.swift */; };
 		B687BA3F22205A74001C33CD /* ScreenShotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B687BA3E22205A74001C33CD /* ScreenShotCell.swift */; };
+		B6D34EA02223E590003B1398 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D34E9F2223E590003B1398 /* Reviews.swift */; };
 		B6DCE270221C36E100294C3C /* AppsPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE26F221C36E100294C3C /* AppsPageVC.swift */; };
 		B6DCE273221C377100294C3C /* BaseListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE272221C377100294C3C /* BaseListVC.swift */; };
 		B6DCE277221C397A00294C3C /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DCE276221C397900294C3C /* AppsGroupCell.swift */; };
@@ -86,6 +87,7 @@
 		B687BA3A22205710001C33CD /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
 		B687BA3C22205901001C33CD /* PreviewScreenshotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewScreenshotController.swift; sourceTree = "<group>"; };
 		B687BA3E22205A74001C33CD /* ScreenShotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotCell.swift; sourceTree = "<group>"; };
+		B6D34E9F2223E590003B1398 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		B6DCE26F221C36E100294C3C /* AppsPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageVC.swift; sourceTree = "<group>"; };
 		B6DCE272221C377100294C3C /* BaseListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListVC.swift; sourceTree = "<group>"; };
 		B6DCE276221C397900294C3C /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				B603D784221BE9C500E9E594 /* SearchResult.swift */,
 				B6DCE284221D499C00294C3C /* AppGroup.swift */,
 				B6DCE286221D660D00294C3C /* SocialApp.swift */,
+				B6D34E9F2223E590003B1398 /* Reviews.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				B687BA3B22205710001C33CD /* PreviewCell.swift in Sources */,
 				B6DCE277221C397A00294C3C /* AppsGroupCell.swift in Sources */,
 				B687BA3F22205A74001C33CD /* ScreenShotCell.swift in Sources */,
+				B6D34EA02223E590003B1398 /* Reviews.swift in Sources */,
 				B603D777221AFFFA00E9E594 /* BaseTabBarController.swift in Sources */,
 				B658785F221EA3F00016A25C /* AppDetailController.swift in Sources */,
 				B603D77D221B0E8700E9E594 /* SearchResultCell.swift in Sources */,

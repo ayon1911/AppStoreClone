@@ -23,10 +23,22 @@ class AppDetailController: BaseListVC, UICollectionViewDelegateFlowLayout {
                     self.collectionView.reloadData()
                 }
             }
+            
+            let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId ?? "")/sortby=mostrecent/json?l=en&cc=us"
+            Service.shared.fetchGenericJsonData(urlString: reviewsUrl) { (reviews: Reviews?, error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                self.reviews = reviews
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
     
     var app: Result?
+    var reviews: Reviews?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +64,7 @@ class AppDetailController: BaseListVC, UICollectionViewDelegateFlowLayout {
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReviewRowCell.cellID, for: indexPath) as! ReviewRowCell
+            cell.reviewsController.reviews = self.reviews
             return cell
         }
     }

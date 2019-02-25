@@ -36,21 +36,33 @@ class Service {
     }
     
     func fetchGenericJsonData<T: Decodable>(urlString: String, completion: @escaping (T?, Error?) -> ()) {
-        guard let url = URL(string: urlString) else { return }
-        URLSession.shared.dataTask(with: url) { (data, res, error) in
-            if let err = error {
-                print(err.localizedDescription)
-                completion(nil, err)
-                return
-            }
+//        guard let url = URL(string: urlString) else { return }
+//        URLSession.shared.dataTask(with: url) { (data, res, error) in
+//            if let err = error {
+//                print(err.localizedDescription)
+//                completion(nil, err)
+//                return
+//            }
+//            do {
+//                let objs = try JSONDecoder().decode(T.self, from: data!)
+//                completion(objs, nil)
+//            } catch {
+//                completion(nil, error)
+//                print(error.localizedDescription)
+//            }
+//
+//            }.resume()
+        guard let url = URL(string: urlString) else { fatalError("Invalid Url")}
+        DispatchQueue.global().async {
             do {
-                let objs = try JSONDecoder().decode(T.self, from: data!)
-                completion(objs, nil)
+                let data = try Data(contentsOf: url)
+                let downloadedData = try JSONDecoder().decode(T.self, from: data)
+                DispatchQueue.main.async {
+                    completion(downloadedData, nil)
+                }
             } catch {
-                completion(nil, error)
                 print(error.localizedDescription)
             }
-            
-            }.resume()
+        }
     }
 }
