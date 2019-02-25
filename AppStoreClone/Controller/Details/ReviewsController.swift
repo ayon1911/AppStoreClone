@@ -34,11 +34,18 @@ class ReviewsController: HorizontalSnappingVC, UICollectionViewDelegateFlowLayou
         cell.authorLabel.text = entry?.author.name.label
         cell.titleLabel.text = entry?.title.label
         cell.bodyLabel.text = entry?.content.label
+        
+        for (index, view) in cell.startsStackView.arrangedSubviews.enumerated() {
+            if let raiting = Int((entry?.rating.label)!) {
+                view.alpha = index >= raiting ? 0 : 1
+            }
+        }
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width - 48, height: view.frame.height - 48)
+        return .init(width: view.frame.width - 48, height: view.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

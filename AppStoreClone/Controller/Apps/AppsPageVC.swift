@@ -28,6 +28,7 @@ class AppsPageVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         super.viewDidLoad()
         
         collectionView.backgroundColor = .white
+
         view.addSubview(activityIndicator)
         activityIndicator.fillSuperview()
         
