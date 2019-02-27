@@ -60,6 +60,11 @@ class AppsSearchVC: BaseListVC, UICollectionViewDelegateFlowLayout, UISearchBarD
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let appDetailVC = AppDetailController(appId: String(appResult[indexPath.item].trackId))
+        navigationController?.pushViewController(appDetailVC, animated: true)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         enterSearchTermLable.isHidden = appResult.count != 0
         return appResult.count
@@ -79,6 +84,9 @@ class AppsSearchVC: BaseListVC, UICollectionViewDelegateFlowLayout, UISearchBarD
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
             Service.shared.fetchApps(searchTerm: searchText) { (results, error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                }
                 self.appResult = results?.results ?? []
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()

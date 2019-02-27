@@ -121,8 +121,7 @@ class AppsPageVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         cell.appSectionTitlelabel.text = appGroup.feed.title
         cell.horizontalVC.appGroup = appGroup
         cell.horizontalVC.didSelectHandler = { [weak self] feedResult in
-            let vc = AppDetailController()
-            vc.appId = feedResult.id
+            let vc = AppDetailController(appId: feedResult.id)
             vc.navigationItem.title = feedResult.name
             self?.navigationController?.pushViewController(vc, animated: true)
         }
@@ -138,4 +137,22 @@ class AppsPageVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         return .init(top: 16, left: 0, bottom: 0, right: 0)
     }
     
+    
 }
+
+class MyTitleView : UICollectionReusableView {
+    weak var lab : UILabel!
+    override init(frame: CGRect) {
+        super.init(frame:frame)
+        let lab = UILabel(frame:self.bounds)
+        self.addSubview(lab)
+        lab.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        lab.font = UIFont(name: "GillSans-Bold", size: 40)
+        lab.text = "Testing"
+        self.lab = lab
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+

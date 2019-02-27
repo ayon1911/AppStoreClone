@@ -10,33 +10,16 @@ import UIKit
 
 class AppDetailController: BaseListVC, UICollectionViewDelegateFlowLayout {
     
-    var appId: String! {
-        didSet {
-            let urlString = "https://itunes.apple.com/lookup?id=\(appId ?? "")"
-            Service.shared.fetchGenericJsonData(urlString: urlString) { (result: SearchResult?, error) in
-                if let err = error {
-                    print(err.localizedDescription)
-                }
-                let app = result?.results.first
-                self.app = app
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
-            
-            let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId ?? "")/sortby=mostrecent/json?l=en&cc=us"
-            Service.shared.fetchGenericJsonData(urlString: reviewsUrl) { (reviews: Reviews?, error) in
-                if let err = error {
-                    print(err.localizedDescription)
-                }
-                self.reviews = reviews
-            }
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
+    fileprivate let appId: String
+    //dependencyInjectio Constructor
+    init(appId: String) {
+        self.appId = appId
+        super.init()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     var app: Result?
     var reviews: Reviews?
     
@@ -47,6 +30,7 @@ class AppDetailController: BaseListVC, UICollectionViewDelegateFlowLayout {
         collectionView.register(PreviewCell.self, forCellWithReuseIdentifier: PreviewCell.cellID)
         collectionView.register(ReviewRowCell.self, forCellWithReuseIdentifier: ReviewRowCell.cellID)
         navigationItem.largeTitleDisplayMode = .never
+        fetchData()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -91,4 +75,33 @@ class AppDetailController: BaseListVC, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .init(top: 0, left: 0, bottom: 16, right: 0)
     }
+}
+
+extension AppDetailController {
+    
+    func fetchData() {
+        let urlString = "https://itunes.apple.com/lookup?id=\(appId)"
+        Service.shared.fetchGenericJsonData(urlString: urlString) { (result: SearchResult?, error) in
+            if let err = error {
+                print(err.localizedDescription)
+            }
+            let app = result?.results.first
+            self.app = app
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        
+        let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId)/sortby=mostrecent/json?l=en&cc=us"
+        Service.shared.fetchGenericJsonData(urlString: reviewsUrl) { (reviews: Reviews?, error) in
+            if let err = error {
+                print(err.localizedDescription)
+            }
+            self.reviews = reviews
+        }
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
 }

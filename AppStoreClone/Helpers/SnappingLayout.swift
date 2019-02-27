@@ -7,6 +7,7 @@
 //
 
 import UIKit
+let separatorDecorationView = "separator"
 
 class SnappingLayout: UICollectionViewFlowLayout {
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
@@ -27,6 +28,45 @@ class SnappingLayout: UICollectionViewFlowLayout {
         })
         
         return CGPoint(x: proposedContentOffset.x + offsetAdjustment, y: proposedContentOffset.y)
+    }
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let layoutAttributes = super.layoutAttributesForElements(in: rect) ?? []
+        let lineWidth = self.minimumLineSpacing
+        
+        var decorationAttributes: [UICollectionViewLayoutAttributes] = []
+        
+        // skip first cell
+        for layoutAttribute in layoutAttributes where layoutAttribute.indexPath.item > 0 {
+            let separatorAttribute = UICollectionViewLayoutAttributes(forDecorationViewOfKind: separatorDecorationView,
+                                                                      with: layoutAttribute.indexPath)
+            let cellFrame = layoutAttribute.frame
+            separatorAttribute.frame = CGRect(x: cellFrame.origin.x + 68,
+                                              y: cellFrame.origin.y - lineWidth,
+                                              width: cellFrame.size.width - 68,
+                                              height: lineWidth)
+            separatorAttribute.zIndex = Int.max
+            decorationAttributes.append(separatorAttribute)
+        }
+        
+        return layoutAttributes + decorationAttributes
+    }
+    
+}
+
+public final class SeparatorView: UICollectionReusableView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = .lightGray
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override public func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        self.frame = layoutAttributes.frame
     }
     
 }
