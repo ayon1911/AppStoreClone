@@ -10,6 +10,8 @@ import UIKit
 
 class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     
+    var startingFrame: CGRect?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +43,28 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let redView = UIView()
+        redView.backgroundColor = .red
+        view.addSubview(redView)
+        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
+        redView.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        redView.layer.cornerRadius = 16
         
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
+        self.startingFrame = startingFrame
+        
+        redView.frame = startingFrame
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            redView.frame = self.view.frame
+        }, completion: nil)
+    }
+    
+    @objc func handleRemoveRedView(gesture: UITapGestureRecognizer) {
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            gesture.view?.frame = self.startingFrame ?? .zero
+        }, completion: { _ in
+            gesture.view?.removeFromSuperview()
+        })
     }
 }
