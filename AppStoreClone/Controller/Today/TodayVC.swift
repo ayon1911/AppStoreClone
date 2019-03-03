@@ -11,6 +11,7 @@ import UIKit
 class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     
     var startingFrame: CGRect?
+    let appFullScreen = AppFullScreenVC()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +44,12 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let redView = UIView()
-        redView.backgroundColor = .red
+        
+        
+        guard let redView = appFullScreen.view else { return }
         view.addSubview(redView)
+        addChild(appFullScreen)
+        
         redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
         redView.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
         redView.layer.cornerRadius = 16
@@ -57,12 +61,15 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         redView.frame = startingFrame
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             redView.frame = self.view.frame
+            self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
         }, completion: nil)
     }
     
     @objc func handleRemoveRedView(gesture: UITapGestureRecognizer) {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             gesture.view?.frame = self.startingFrame ?? .zero
+            self.tabBarController?.tabBar.transform = .identity
+            self.appFullScreen.removeFromParent()
         }, completion: { _ in
             gesture.view?.removeFromSuperview()
         })

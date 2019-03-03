@@ -24,6 +24,8 @@
 		B603D788221BEDBD00E9E594 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D787221BEDBD00E9E594 /* Service.swift */; };
 		B632941E222BF3D000B477EA /* TodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B632941D222BF3D000B477EA /* TodayVC.swift */; };
 		B6329421222BF46500B477EA /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6329420222BF46500B477EA /* TodayCell.swift */; };
+		B6329423222BFD5D00B477EA /* AppFullScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6329422222BFD5D00B477EA /* AppFullScreenVC.swift */; };
+		B6329425222C002D00B477EA /* AppFullScreenDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6329424222C002D00B477EA /* AppFullScreenDescriptionCell.swift */; };
 		B63FC57C22213BD8003300D7 /* ReviewRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63FC57B22213BD8003300D7 /* ReviewRowCell.swift */; };
 		B63FC57E22213DCE003300D7 /* ReviewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63FC57D22213DCE003300D7 /* ReviewsController.swift */; };
 		B63FC58022213FAA003300D7 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63FC57F22213FAA003300D7 /* ReviewCell.swift */; };
@@ -83,6 +85,8 @@
 		B603D787221BEDBD00E9E594 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		B632941D222BF3D000B477EA /* TodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVC.swift; sourceTree = "<group>"; };
 		B6329420222BF46500B477EA /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
+		B6329422222BFD5D00B477EA /* AppFullScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullScreenVC.swift; sourceTree = "<group>"; };
+		B6329424222C002D00B477EA /* AppFullScreenDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullScreenDescriptionCell.swift; sourceTree = "<group>"; };
 		B63FC57B22213BD8003300D7 /* ReviewRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRowCell.swift; sourceTree = "<group>"; };
 		B63FC57D22213DCE003300D7 /* ReviewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsController.swift; sourceTree = "<group>"; };
 		B63FC57F22213FAA003300D7 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				B632941D222BF3D000B477EA /* TodayVC.swift */,
+				B6329422222BFD5D00B477EA /* AppFullScreenVC.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				B6329420222BF46500B477EA /* TodayCell.swift */,
+				B6329424222C002D00B477EA /* AppFullScreenDescriptionCell.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -541,6 +547,7 @@
 				B6DCE279221C3C1D00294C3C /* AppsHorizontalVC.swift in Sources */,
 				B6587862221EC7E40016A25C /* AppDetailCell.swift in Sources */,
 				B603D780221B157800E9E594 /* UIView+Layout.swift in Sources */,
+				B6329423222BFD5D00B477EA /* AppFullScreenVC.swift in Sources */,
 				B603D757221AFCC300E9E594 /* AppDelegate.swift in Sources */,
 				B6DCE27B221C43A000294C3C /* AppRowCell.swift in Sources */,
 				B603D788221BEDBD00E9E594 /* Service.swift in Sources */,
@@ -550,6 +557,7 @@
 				B63FC57E22213DCE003300D7 /* ReviewsController.swift in Sources */,
 				B687BA3B22205710001C33CD /* PreviewCell.swift in Sources */,
 				B6DCE277221C397A00294C3C /* AppsGroupCell.swift in Sources */,
+				B6329425222C002D00B477EA /* AppFullScreenDescriptionCell.swift in Sources */,
 				B687BA3F22205A74001C33CD /* ScreenShotCell.swift in Sources */,
 				B6D34EA02223E590003B1398 /* Reviews.swift in Sources */,
 				B603D777221AFFFA00E9E594 /* BaseTabBarController.swift in Sources */,
