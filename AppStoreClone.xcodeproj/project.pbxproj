@@ -22,6 +22,8 @@
 		B603D782221B19CE00E9E594 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D781221B19CE00E9E594 /* VerticalStackView.swift */; };
 		B603D785221BE9C500E9E594 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D784221BE9C500E9E594 /* SearchResult.swift */; };
 		B603D788221BEDBD00E9E594 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603D787221BEDBD00E9E594 /* Service.swift */; };
+		B632941E222BF3D000B477EA /* TodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B632941D222BF3D000B477EA /* TodayVC.swift */; };
+		B6329421222BF46500B477EA /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6329420222BF46500B477EA /* TodayCell.swift */; };
 		B63FC57C22213BD8003300D7 /* ReviewRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63FC57B22213BD8003300D7 /* ReviewRowCell.swift */; };
 		B63FC57E22213DCE003300D7 /* ReviewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63FC57D22213DCE003300D7 /* ReviewsController.swift */; };
 		B63FC58022213FAA003300D7 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63FC57F22213FAA003300D7 /* ReviewCell.swift */; };
@@ -79,6 +81,8 @@
 		B603D781221B19CE00E9E594 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		B603D784221BE9C500E9E594 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		B603D787221BEDBD00E9E594 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		B632941D222BF3D000B477EA /* TodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVC.swift; sourceTree = "<group>"; };
+		B6329420222BF46500B477EA /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
 		B63FC57B22213BD8003300D7 /* ReviewRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRowCell.swift; sourceTree = "<group>"; };
 		B63FC57D22213DCE003300D7 /* ReviewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsController.swift; sourceTree = "<group>"; };
 		B63FC57F22213FAA003300D7 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 		B603D778221B088200E9E594 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B632941C222BF3C100B477EA /* Today */,
 				B658785D221EA3DF0016A25C /* Details */,
 				B6DCE274221C38B600294C3C /* Search */,
 				B6DCE271221C36E500294C3C /* Apps */,
@@ -198,6 +203,7 @@
 		B603D77B221B0E5E00E9E594 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B632941F222BF44A00B477EA /* Today */,
 				B6587860221EC7C20016A25C /* Details */,
 				B6DCE275221C396900294C3C /* Apps */,
 				B603D77C221B0E8700E9E594 /* SearchResultCell.swift */,
@@ -233,6 +239,22 @@
 				B603D787221BEDBD00E9E594 /* Service.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		B632941C222BF3C100B477EA /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				B632941D222BF3D000B477EA /* TodayVC.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		B632941F222BF44A00B477EA /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				B6329420222BF46500B477EA /* TodayCell.swift */,
+			);
+			path = Today;
 			sourceTree = "<group>";
 		};
 		B658785D221EA3DF0016A25C /* Details */ = {
@@ -506,11 +528,13 @@
 			files = (
 				B603D77A221B08AA00E9E594 /* AppsSearchVC.swift in Sources */,
 				B63FC58022213FAA003300D7 /* ReviewCell.swift in Sources */,
+				B632941E222BF3D000B477EA /* TodayVC.swift in Sources */,
 				B6FB5A7B221DAE9B0080F20F /* SnappingLayout.swift in Sources */,
 				B6DCE281221C4CAB00294C3C /* AppsHeaderHorizontalVC.swift in Sources */,
 				B6DCE287221D660D00294C3C /* SocialApp.swift in Sources */,
 				B603D759221AFCC300E9E594 /* ViewController.swift in Sources */,
 				B6DCE285221D499C00294C3C /* AppGroup.swift in Sources */,
+				B6329421222BF46500B477EA /* TodayCell.swift in Sources */,
 				B603D785221BE9C500E9E594 /* SearchResult.swift in Sources */,
 				B6FB5A79221D8DE10080F20F /* HorizontalSnappingVC.swift in Sources */,
 				B6DCE283221C4E0100294C3C /* AppsHeaderCell.swift in Sources */,
