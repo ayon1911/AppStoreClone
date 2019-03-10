@@ -22,11 +22,11 @@ class BaseTabBarController: UITabBarController {
     
     fileprivate func createNavVC(viewController: UIViewController, title: String, imageName: String) -> UIViewController {
         let navVC = UINavigationController(rootViewController: viewController)
+        navVC.navigationBar.prefersLargeTitles = true
         viewController.view.backgroundColor = .white
         viewController.navigationItem.title = title
         navVC.tabBarItem.title = title
         navVC.tabBarItem.image = UIImage(named: imageName)
-        navVC.navigationBar.prefersLargeTitles = true
         return navVC
     }
 }
