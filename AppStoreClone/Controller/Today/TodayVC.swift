@@ -13,6 +13,11 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     var startingFrame: CGRect?
     var appFullScreen: AppFullScreenVC!
     
+    let items = [
+        TodayItem.init(category: "Life Hack", title: "Utilizing", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way", backgrounColor: .white),
+        TodayItem.init(category: "HOLIDAYS", title: "Travel on Budjet", image: #imageLiteral(resourceName: "holiday"), description: "Travel is good for everyone to see what's behind the horaizon", backgrounColor: #colorLiteral(red: 0.9857528806, green: 0.9669142365, blue: 0.7202112079, alpha: 1)),
+        ]
+    
     var topConstraint, leadingConstraint, widthConstraint, heightConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
@@ -25,11 +30,12 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return items.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodayCell.cellID, for: indexPath) as! TodayCell
+        cell.todayItem = items[indexPath.item]
         return cell
     }
     
@@ -47,30 +53,31 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let appFullScreenVC = AppFullScreenVC()
-        guard let redView = appFullScreenVC.view else { return }
-        view.addSubview(redView)
+        guard let fullScreenView = appFullScreenVC.view else { return }
+        view.addSubview(fullScreenView)
         addChild(appFullScreenVC)
         
+        appFullScreenVC.todayItem = items[indexPath.item]
         appFullScreenVC.dismissHandler = {
             self.handleRemoveRedView()
         }
         
         self.appFullScreen = appFullScreenVC
         
-        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
+//        fullScreenView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
 //        redView.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
-        redView.layer.cornerRadius = 16
+        fullScreenView.layer.cornerRadius = 16
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
         self.startingFrame = startingFrame
         
         //auto layout constraint animations
-        redView.translatesAutoresizingMaskIntoConstraints = false
-        topConstraint = redView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
-        leadingConstraint = redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingFrame.origin.x)
-        widthConstraint = redView.widthAnchor.constraint(equalToConstant: startingFrame.width)
-        heightConstraint = redView.heightAnchor.constraint(equalToConstant: startingFrame.height)
+        fullScreenView.translatesAutoresizingMaskIntoConstraints = false
+        topConstraint = fullScreenView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
+        leadingConstraint = fullScreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingFrame.origin.x)
+        widthConstraint = fullScreenView.widthAnchor.constraint(equalToConstant: startingFrame.width)
+        heightConstraint = fullScreenView.heightAnchor.constraint(equalToConstant: startingFrame.height)
         
         [topConstraint, leadingConstraint, widthConstraint, heightConstraint].forEach({$0?.isActive = true})
         self.view.layoutIfNeeded()
