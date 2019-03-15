@@ -10,6 +10,8 @@ import UIKit
 
 class AppFullScreenVC: UITableViewController {
     
+    var dismissHandler: (() -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,11 +35,9 @@ class AppFullScreenVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
-            let cell = UITableViewCell()
-            let todayCell = TodayCell()
-            cell.addSubview(todayCell)
-            todayCell.centerInSuperview(size: CGSize(width: 250, height: 250))
-            return cell
+            let headerCell = AppFullscreenHeaderCell()
+            headerCell.closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
+            return headerCell
         }
         
         let cell = AppFullScreenDescriptionCell()
@@ -45,6 +45,14 @@ class AppFullScreenVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 450
+        if indexPath.row == 0 {
+            return 450
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+    
+    @objc fileprivate func handleDismiss(button: UIButton) {
+        button.isHidden = true
+        dismissHandler?()
     }
 }

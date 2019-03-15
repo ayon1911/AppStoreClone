@@ -11,7 +11,9 @@ import UIKit
 class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     
     var startingFrame: CGRect?
-    let appFullScreen = AppFullScreenVC()
+    var appFullScreen: AppFullScreenVC!
+    
+    var topConstraint, leadingConstraint, widthConstraint, heightConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,34 +46,62 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
-        guard let redView = appFullScreen.view else { return }
+        let appFullScreenVC = AppFullScreenVC()
+        guard let redView = appFullScreenVC.view else { return }
         view.addSubview(redView)
-        addChild(appFullScreen)
+        addChild(appFullScreenVC)
+        
+        appFullScreenVC.dismissHandler = {
+            self.handleRemoveRedView()
+        }
+        
+        self.appFullScreen = appFullScreenVC
         
         redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
-        redView.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+//        redView.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
         redView.layer.cornerRadius = 16
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
         self.startingFrame = startingFrame
         
-        redView.frame = startingFrame
+        //auto layout constraint animations
+        redView.translatesAutoresizingMaskIntoConstraints = false
+        topConstraint = redView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
+        leadingConstraint = redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingFrame.origin.x)
+        widthConstraint = redView.widthAnchor.constraint(equalToConstant: startingFrame.width)
+        heightConstraint = redView.heightAnchor.constraint(equalToConstant: startingFrame.height)
+        
+        [topConstraint, leadingConstraint, widthConstraint, heightConstraint].forEach({$0?.isActive = true})
+        self.view.layoutIfNeeded()
+        
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-            redView.frame = self.view.frame
+            
+            self.topConstraint?.constant = 0
+            self.leadingConstraint?.constant = 0
+            self.heightConstraint?.constant = self.view.frame.height
+            self.widthConstraint?.constant = self.view.frame.width
+            self.view.layoutIfNeeded()
+            
             self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
         }, completion: nil)
     }
     
-    @objc func handleRemoveRedView(gesture: UITapGestureRecognizer) {
+    @objc func handleRemoveRedView() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-            gesture.view?.frame = self.startingFrame ?? .zero
+//            gesture.view?.frame = self.startingFrame ?? .zero
+            self.appFullScreen.tableView.contentOffset = .zero
+            guard let startingFrame = self.startingFrame else { return }
             self.tabBarController?.tabBar.transform = .identity
-            self.appFullScreen.removeFromParent()
+            self.topConstraint?.constant = startingFrame.origin.y
+            self.leadingConstraint?.constant = startingFrame.origin.x
+            self.widthConstraint?.constant = startingFrame.width
+            self.heightConstraint?.constant = startingFrame.height
+            self.view.layoutIfNeeded()
         }, completion: { _ in
-            gesture.view?.removeFromSuperview()
+//            gesture.view?.removeFromSuperview()
+            self.appFullScreen.view.removeFromSuperview()
+            self.appFullScreen.removeFromParent()
         })
     }
 }
