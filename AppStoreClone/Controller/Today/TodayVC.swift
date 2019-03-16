@@ -23,11 +23,6 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         return ac
     }()
     
-    //    let items = [
-    //
-    //        TodayItem.init(category: "THE DAILY LIST", title: "Test-Drive These Carplay", image: #imageLiteral(resourceName: "garden"), description: "", backgrounColor: .white, cellType: .multiple),
-    //        ]
-    
     var topConstraint, leadingConstraint, widthConstraint, heightConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
@@ -45,14 +40,57 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         navigationController?.isNavigationBarHidden = true
     }
     
+    fileprivate func fetchData() {
+        let dispatchGroup = DispatchGroup()
+        var topGrossingGroup: AppGroup?
+        var gamesGroup: AppGroup?
+        
+        dispatchGroup.enter()
+        Service.shared.fetchTopGrossing { (appGroup, error) in
+            if let err = error {
+                print("Error fetching data", err)
+            }
+            topGrossingGroup = appGroup
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchGames { (appGroup, error) in
+            if let err = error {
+                print("Error fetching data", err)
+            }
+            gamesGroup = appGroup
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            // I'll have access to top grossing and games somehow
+            
+            print("Finished fetching")
+            self.activityIndicator.stopAnimating()
+            
+            self.items = [
+                TodayItem.init(category: "Daily List", title: topGrossingGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: topGrossingGroup?.feed.results ?? []),
+                
+                TodayItem.init(category: "Daily List", title: gamesGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: gamesGroup?.feed.results ?? []),
+                
+                TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, cellType: .single, apps: []),
+                TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838578105, green: 0.9588007331, blue: 0.7274674177, alpha: 1), cellType: .single, apps: []),
+                
+            ]
+            
+            self.collectionView.reloadData()
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cellId = items[indexPath.item].cellType
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId.rawValue, for: indexPath) as! BaseTodayCell
+        let cellId = items[indexPath.item].cellType.rawValue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseTodayCell
         cell.todayItem = items[indexPath.item]
         return cell
     }
@@ -70,6 +108,14 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if items[indexPath.item].cellType == .multiple {
+            let fullController = TodayMultipleAppController(mode: .fullScreen)
+            fullController.results = self.items[indexPath.item].apps
+            present(fullController, animated: true, completion: nil)
+            return
+        }
+        
         let appFullScreenVC = AppFullScreenVC()
         guard let fullScreenView = appFullScreenVC.view else { return }
         view.addSubview(fullScreenView)
@@ -140,37 +186,5 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         })
     }
     
-    fileprivate func fetchData() {
-        var topGrossingGroup: AppGroup?
-        var gamesGroup: AppGroup?
-        
-        let dispatchGroup = DispatchGroup()
-        dispatchGroup.enter()
-        Service.shared.fetchTopGrossing { (appGroup, error) in
-            if let err = error {
-                print("Error fetching data", err)
-            }
-            topGrossingGroup = appGroup
-            dispatchGroup.leave()
-        }
-        
-        dispatchGroup.enter()
-        Service.shared.fetchGames { (appGroup, error) in
-            if let err = error {
-                print("Error fetching data", err)
-            }
-            gamesGroup = appGroup
-            dispatchGroup.leave()
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            self.activityIndicator.stopAnimating()
-            self.items = [
-                TodayItem.init(category: "THE DAILY LIST", title: topGrossingGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgrounColor: .white, cellType: .multiple, apps: topGrossingGroup?.feed.results ?? []),
-                TodayItem.init(category: "Daily List", title: gamesGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way", backgrounColor: .white, cellType: .single, apps: []),
-                TodayItem.init(category: "THE DAILY LIST", title: gamesGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgrounColor: .white, cellType: .multiple, apps: gamesGroup?.feed.results ?? []),
-            ]
-            self.collectionView.reloadData()
-        }
-    }
+    
 }

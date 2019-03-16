@@ -13,7 +13,7 @@ struct TodayItem {
     let title: String
     let image: UIImage
     let description: String
-    let backgrounColor: UIColor
+    let backgroundColor: UIColor
     let cellType: CellType
     let apps: [FeedResult]
     
