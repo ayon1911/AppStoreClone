@@ -14,16 +14,29 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     var appFullScreen: AppFullScreenVC!
     static let cellSize: CGFloat = 500
     
-    let items = [
-        TodayItem.init(category: "Life Hack", title: "Utilizing", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way", backgrounColor: .white, cellType: .single),
-        TodayItem.init(category: "HOLIDAYS", title: "Travel on Budjet", image: #imageLiteral(resourceName: "holiday"), description: "Travel is good for everyone to see what's behind the horaizon", backgrounColor: #colorLiteral(red: 0.9857528806, green: 0.9669142365, blue: 0.7202112079, alpha: 1), cellType: .single),
-        TodayItem.init(category: "THE DAILY LIST", title: "Test-Drive These Carplay", image: #imageLiteral(resourceName: "garden"), description: "", backgrounColor: .white, cellType: .multiple),
-        ]
+    var items = [TodayItem]()
+    let activityIndicator: UIActivityIndicatorView = {
+        let ac = UIActivityIndicatorView(style: .whiteLarge)
+        ac.color = .darkGray
+        ac.startAnimating()
+        ac.hidesWhenStopped = true
+        return ac
+    }()
+    
+    //    let items = [
+    //
+    //        TodayItem.init(category: "THE DAILY LIST", title: "Test-Drive These Carplay", image: #imageLiteral(resourceName: "garden"), description: "", backgrounColor: .white, cellType: .multiple),
+    //        ]
     
     var topConstraint, leadingConstraint, widthConstraint, heightConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.centerInSuperview()
+        
+        fetchData()
         
         collectionView.backgroundColor = #colorLiteral(red: 0.9416126609, green: 0.9407772422, blue: 0.9711847901, alpha: 1)
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
@@ -105,7 +118,7 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     
     @objc func handleRemoveRedView() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-//            gesture.view?.frame = self.startingFrame ?? .zero
+            //            gesture.view?.frame = self.startingFrame ?? .zero
             self.appFullScreen.tableView.contentOffset = .zero
             guard let startingFrame = self.startingFrame else { return }
             self.tabBarController?.tabBar.transform = .identity
@@ -120,10 +133,44 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
             
             self.view.layoutIfNeeded()
         }, completion: { _ in
-//            gesture.view?.removeFromSuperview()
+            //            gesture.view?.removeFromSuperview()
             self.appFullScreen.view.removeFromSuperview()
             self.appFullScreen.removeFromParent()
             self.collectionView.isUserInteractionEnabled = true
         })
+    }
+    
+    fileprivate func fetchData() {
+        var topGrossingGroup: AppGroup?
+        var gamesGroup: AppGroup?
+        
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        Service.shared.fetchTopGrossing { (appGroup, error) in
+            if let err = error {
+                print("Error fetching data", err)
+            }
+            topGrossingGroup = appGroup
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchGames { (appGroup, error) in
+            if let err = error {
+                print("Error fetching data", err)
+            }
+            gamesGroup = appGroup
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.activityIndicator.stopAnimating()
+            self.items = [
+                TodayItem.init(category: "THE DAILY LIST", title: topGrossingGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgrounColor: .white, cellType: .multiple, apps: topGrossingGroup?.feed.results ?? []),
+                TodayItem.init(category: "Daily List", title: gamesGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way", backgrounColor: .white, cellType: .single, apps: []),
+                TodayItem.init(category: "THE DAILY LIST", title: gamesGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgrounColor: .white, cellType: .multiple, apps: gamesGroup?.feed.results ?? []),
+            ]
+            self.collectionView.reloadData()
+        }
     }
 }
