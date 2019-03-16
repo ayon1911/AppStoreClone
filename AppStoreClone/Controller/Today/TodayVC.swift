@@ -63,9 +63,8 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         }
         
         self.appFullScreen = appFullScreenVC
+        self.collectionView.isUserInteractionEnabled = false
         
-//        fullScreenView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
-//        redView.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
         fullScreenView.layer.cornerRadius = 16
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
@@ -91,6 +90,11 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
             self.view.layoutIfNeeded()
             
             self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
+            
+            guard let cell = self.appFullScreen.tableView.cellForRow(at: [0,0]) as? AppFullscreenHeaderCell else { return }
+            cell.todayCell.topConstraint.constant = 48
+            cell.layoutIfNeeded()
+            
         }, completion: nil)
     }
     
@@ -104,11 +108,17 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
             self.leadingConstraint?.constant = startingFrame.origin.x
             self.widthConstraint?.constant = startingFrame.width
             self.heightConstraint?.constant = startingFrame.height
+            
+            guard let cell = self.appFullScreen.tableView.cellForRow(at: [0,0]) as? AppFullscreenHeaderCell else { return }
+            cell.todayCell.topConstraint.constant = 24
+            cell.layoutIfNeeded()
+            
             self.view.layoutIfNeeded()
         }, completion: { _ in
 //            gesture.view?.removeFromSuperview()
             self.appFullScreen.view.removeFromSuperview()
             self.appFullScreen.removeFromParent()
+            self.collectionView.isUserInteractionEnabled = true
         })
     }
 }

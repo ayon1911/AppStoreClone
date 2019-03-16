@@ -21,6 +21,8 @@ class TodayCell: UICollectionViewCell {
         }
     }
     
+    var topConstraint: NSLayoutConstraint!
+    
     let imageView = UIImageView(image: #imageLiteral(resourceName: "garden"))
     let categoryLabel = UILabel(text: "Life Hack", font: .boldSystemFont(ofSize: 20))
     let titleLabel = UILabel(text: "Utilizing", font: .boldSystemFont(ofSize: 28))
@@ -40,7 +42,9 @@ class TodayCell: UICollectionViewCell {
         
         let verticalStackView = VerticalStackView(arrangedSubViews: [categoryLabel, titleLabel, imageContainerView, descriptionLabel], spacing: 8)
         addSubview(verticalStackView)
-        verticalStackView.fillSuperview(padding: .init(top: 24, left: 24, bottom: 24, right: 24))
+        verticalStackView.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 24, left: 24, bottom: 24, right: 24))
+        self.topConstraint = verticalStackView.topAnchor.constraint(equalTo: topAnchor, constant: 24)
+        self.topConstraint.isActive = true
         
     }
     
