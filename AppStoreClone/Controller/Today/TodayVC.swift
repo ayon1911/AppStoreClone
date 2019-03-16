@@ -12,10 +12,12 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     
     var startingFrame: CGRect?
     var appFullScreen: AppFullScreenVC!
+    static let cellSize: CGFloat = 500
     
     let items = [
-        TodayItem.init(category: "Life Hack", title: "Utilizing", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way", backgrounColor: .white),
-        TodayItem.init(category: "HOLIDAYS", title: "Travel on Budjet", image: #imageLiteral(resourceName: "holiday"), description: "Travel is good for everyone to see what's behind the horaizon", backgrounColor: #colorLiteral(red: 0.9857528806, green: 0.9669142365, blue: 0.7202112079, alpha: 1)),
+        TodayItem.init(category: "Life Hack", title: "Utilizing", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way", backgrounColor: .white, cellType: .single),
+        TodayItem.init(category: "HOLIDAYS", title: "Travel on Budjet", image: #imageLiteral(resourceName: "holiday"), description: "Travel is good for everyone to see what's behind the horaizon", backgrounColor: #colorLiteral(red: 0.9857528806, green: 0.9669142365, blue: 0.7202112079, alpha: 1), cellType: .single),
+        TodayItem.init(category: "THE DAILY LIST", title: "Test-Drive These Carplay", image: #imageLiteral(resourceName: "garden"), description: "", backgrounColor: .white, cellType: .multiple),
         ]
     
     var topConstraint, leadingConstraint, widthConstraint, heightConstraint: NSLayoutConstraint?
@@ -24,7 +26,8 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         super.viewDidLoad()
         
         collectionView.backgroundColor = #colorLiteral(red: 0.9416126609, green: 0.9407772422, blue: 0.9711847901, alpha: 1)
-        collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayCell.cellID)
+        collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
+        collectionView.register(TodayMulptipleAppCell.self, forCellWithReuseIdentifier: TodayItem.CellType.multiple.rawValue)
         
         navigationController?.isNavigationBarHidden = true
     }
@@ -34,13 +37,15 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodayCell.cellID, for: indexPath) as! TodayCell
+        
+        let cellId = items[indexPath.item].cellType
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId.rawValue, for: indexPath) as! BaseTodayCell
         cell.todayItem = items[indexPath.item]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width - 64, height: 450)
+        return .init(width: view.frame.width - 64, height: TodayVC.cellSize)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
