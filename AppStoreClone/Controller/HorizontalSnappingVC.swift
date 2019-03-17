@@ -16,7 +16,7 @@ class HorizontalSnappingVC: UICollectionViewController {
         super.init(collectionViewLayout: layout)
         collectionView.decelerationRate = .fast
         layout.register(SeparatorView.self, forDecorationViewOfKind: separatorDecorationView)
-        layout.minimumLineSpacing = 0.5
+        layout.minimumLineSpacing = 8
     }
     
     required init?(coder aDecoder: NSCoder) {

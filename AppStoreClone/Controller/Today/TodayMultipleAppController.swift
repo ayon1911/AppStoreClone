@@ -10,7 +10,7 @@ import UIKit
 
 class TodayMultipleAppController: BaseListVC, UICollectionViewDelegateFlowLayout {
     
-    var results = [FeedResult]()
+    var apps = [FeedResult]()
     fileprivate let spacing: CGFloat = 16
     let closeButton: UIButton = {
         let button = UIButton(type: .system)
@@ -27,6 +27,7 @@ class TodayMultipleAppController: BaseListVC, UICollectionViewDelegateFlowLayout
         
         if mode == .fullScreen {
             setupCloseButton()
+            navigationController?.isNavigationBarHidden = true
         } else {
             collectionView.isScrollEnabled = false
         }
@@ -45,14 +46,14 @@ class TodayMultipleAppController: BaseListVC, UICollectionViewDelegateFlowLayout
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if mode == .fullScreen {
-            return results.count
+            return apps.count
         }
-        return min(4, results.count)
+        return min(4, apps.count)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MultipleAppCell.cellID, for: indexPath) as! MultipleAppCell
-        cell.app = results[indexPath.item]
+        cell.app = apps[indexPath.item]
         return cell
     }
     
@@ -73,6 +74,12 @@ class TodayMultipleAppController: BaseListVC, UICollectionViewDelegateFlowLayout
             return .init(top: 12, left: 24, bottom: 12, right: 24)
         }
         return .zero
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let appId = self.apps[indexPath.item].id
+        let appDetailController = AppDetailController(appId: appId)
+        navigationController?.pushViewController(appDetailController, animated: true)
     }
     
     fileprivate let mode: Mode
