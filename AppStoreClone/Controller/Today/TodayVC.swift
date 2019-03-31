@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
+class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
     
     var startingFrame: CGRect?
     var appFullScreen: AppFullScreenVC!
@@ -23,10 +23,16 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         return ac
     }()
     
+    let blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+    
     var anchoredConstraints: AnchoredConstraints?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(blurVisualEffectView)
+        blurVisualEffectView.fillSuperview()
+        blurVisualEffectView.alpha = 0
         
         view.addSubview(activityIndicator)
         activityIndicator.centerInSuperview()
@@ -102,8 +108,6 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         return cell
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.frame.width - 64, height: TodayVC.cellSize)
     }
@@ -136,11 +140,32 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         let appFullScreenVC = AppFullScreenVC()
         appFullScreenVC.todayItem = items[indexPath.item]
         appFullScreenVC.dismissHandler = {
-            self.handleRemoveRedView()
+            self.handleAppFullScreenDismiss()
         }
         self.appFullScreen = appFullScreenVC
         appFullScreenVC.view.layer.cornerRadius = 16
-
+        
+        //adding a pan gestures
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(handleDrag))
+        gesture.delegate = self
+        appFullScreenVC.view.addGestureRecognizer(gesture)
+    }
+    
+    @objc fileprivate func handleDrag(gesture: UIPanGestureRecognizer) {
+        let traslationY = gesture.translation(in: appFullScreen.view).y
+        let scale = 1 - traslationY / 1000
+        if gesture.state == .changed {
+            let trasform: CGAffineTransform = .init(scaleX: scale, y: scale)
+            self.appFullScreen.view.transform = trasform
+        }
+        else if gesture.state == .ended {
+            handleAppFullScreenDismiss()
+        }
+        print(traslationY)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     fileprivate func setupStartingCellFrame(_ indexPath: IndexPath) {
@@ -158,22 +183,13 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         setupStartingCellFrame(indexPath)
         
         guard let startingFrame = self.startingFrame else { return }
-        
-        //auto layout constraint animations
-//        fullScreenView.translatesAutoresizingMaskIntoConstraints = false
-//        topConstraint = fullScreenView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
-//        leadingConstraint = fullScreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingFrame.origin.x)
-//        widthConstraint = fullScreenView.widthAnchor.constraint(equalToConstant: startingFrame.width)
-//        heightConstraint = fullScreenView.heightAnchor.constraint(equalToConstant: startingFrame.height)
-//
-//        [topConstraint, leadingConstraint, widthConstraint, heightConstraint].forEach({$0?.isActive = true})
         self.anchoredConstraints = fullScreenView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: startingFrame.origin.y, left: startingFrame.origin.x, bottom: 0, right: 0), size: .init(width: startingFrame.width, height: startingFrame.height))
         self.view.layoutIfNeeded()
     }
     
     fileprivate func beginAnimationAppFullScrren() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-            
+            self.blurVisualEffectView.alpha = 1
             self.anchoredConstraints?.top?.constant = 0
             self.anchoredConstraints?.leading?.constant = 0
             self.anchoredConstraints?.height?.constant = self.view.frame.height
@@ -195,9 +211,10 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         beginAnimationAppFullScrren()
     }
     
-    @objc func handleRemoveRedView() {
+    @objc func handleAppFullScreenDismiss() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-            //            gesture.view?.frame = self.startingFrame ?? .zero
+            self.blurVisualEffectView.alpha = 0
+            self.appFullScreen.view.transform = .identity
             self.appFullScreen.tableView.contentOffset = .zero
             guard let startingFrame = self.startingFrame else { return }
             self.tabBarController?.tabBar.transform = .identity
@@ -212,7 +229,6 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
             
             self.view.layoutIfNeeded()
         }, completion: { _ in
-            //            gesture.view?.removeFromSuperview()
             self.appFullScreen.view.removeFromSuperview()
             self.appFullScreen.removeFromParent()
             self.collectionView.isUserInteractionEnabled = true
@@ -235,6 +251,4 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
             superView = superView?.superview
         }
     }
-    
-    
 }
