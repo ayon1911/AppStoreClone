@@ -13,6 +13,14 @@ class AppFullScreenVC: UITableViewController {
     var dismissHandler: (() -> ())?
     var todayItem: TodayItem?
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0 {
+            scrollView.isScrollEnabled = false
+            //to active scroll after the darging is off
+            scrollView.isScrollEnabled = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +44,7 @@ class AppFullScreenVC: UITableViewController {
             headerCell.todayCell.todayItem = todayItem
             headerCell.todayCell.layer.cornerRadius = 0
             headerCell.clipsToBounds = true
+            headerCell.todayCell.backgroundView = nil
             return headerCell
         }
         
