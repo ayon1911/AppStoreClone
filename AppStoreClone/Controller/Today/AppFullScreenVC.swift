@@ -18,6 +18,7 @@ class AppFullScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         return button
     }()
     
+    let floatingContainerView = UIView()
     let tableView = UITableView(frame: .zero, style: .plain)
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -26,6 +27,9 @@ class AppFullScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             //to active scroll after the darging is off
             scrollView.isScrollEnabled = true
         }
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            self.floatingContainerView.transform = scrollView.contentOffset.y > 100 ? CGAffineTransform(translationX: 0, y: -90 - UIApplication.shared.statusBarFrame.height) : .identity
+        })
     }
     
     fileprivate func setupTableVIew() {
@@ -48,7 +52,6 @@ class AppFullScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         view.clipsToBounds = true
         setupTableVIew()
-        
         setupFlotingControls()
     }
     
@@ -91,12 +94,11 @@ class AppFullScreenVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     fileprivate func setupFlotingControls() {
-        let floatingContainerView = UIView()
         floatingContainerView.clipsToBounds = true
         floatingContainerView.layer.cornerRadius = 16
-        let bottomPadding = UIApplication.shared.statusBarFrame.height
+//        let bottomPadding = UIApplication.shared.statusBarFrame.height
         view.addSubview(floatingContainerView)
-        floatingContainerView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: bottomPadding, right: 16), size: .init(width: 0, height: 100))
+        floatingContainerView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: -90, right: 16), size: .init(width: 0, height: 100))
         let blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         floatingContainerView.addSubview(blurVisualEffectView)
         blurVisualEffectView.fillSuperview()
