@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
+class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
     
     var startingFrame: CGRect?
     var appFullScreen: AppFullScreenVC!
@@ -24,7 +24,7 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout, UIGestureRecogniz
     }()
     
     let blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
-    var appFullScreenBeginOffset: CGFloat = 0
+//    var appFullScreenBeginOffset: CGFloat = 0
     
     var anchoredConstraints: AnchoredConstraints?
     
@@ -152,37 +152,37 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout, UIGestureRecogniz
         appFullScreenVC.view.addGestureRecognizer(gesture)
     }
     
-    @objc fileprivate func handleDrag(gesture: UIPanGestureRecognizer) {
-        if gesture.state == .changed {
-            appFullScreenBeginOffset = appFullScreen.tableView.contentOffset.y
-        }
-        if appFullScreen.tableView.contentOffset.y > 0 {
-            return
-        }
-        let traslationY = gesture.translation(in: appFullScreen.view).y
-        
-        
-        if gesture.state == .changed {
-            if traslationY > 0 {
-                let trueOffset = traslationY - appFullScreenBeginOffset
-                var scale = 1 - trueOffset / 1000
-                scale = min(1, scale)
-                scale = max(0.5, scale)
-                let trasform: CGAffineTransform = .init(scaleX: scale, y: scale)
-                self.appFullScreen.view.transform = trasform
-            }
-        }
-        else if gesture.state == .ended {
-            if traslationY > 0 {
-                handleAppFullScreenDismiss()
-            }
-            
-        }
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
+//    @objc fileprivate func handleDrag(gesture: UIPanGestureRecognizer) {
+//        if gesture.state == .changed {
+//            appFullScreenBeginOffset = appFullScreen.tableView.contentOffset.y
+//        }
+//        if appFullScreen.tableView.contentOffset.y > 0 {
+//            return
+//        }
+//        let traslationY = gesture.translation(in: appFullScreen.view).y
+//
+//
+//        if gesture.state == .changed {
+//            if traslationY > 0 {
+//                let trueOffset = traslationY - appFullScreenBeginOffset
+//                var scale = 1 - trueOffset / 1000
+//                scale = min(1, scale)
+//                scale = max(0.5, scale)
+//                let trasform: CGAffineTransform = .init(scaleX: scale, y: scale)
+//                self.appFullScreen.view.transform = trasform
+//            }
+//        }
+//        else if gesture.state == .ended {
+//            if traslationY > 0 {
+//                handleAppFullScreenDismiss()
+//            }
+//
+//        }
+//    }
+//
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
     
     fileprivate func setupStartingCellFrame(_ indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
@@ -240,7 +240,7 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout, UIGestureRecogniz
             self.anchoredConstraints?.height?.constant = startingFrame.height
             
             guard let cell = self.appFullScreen.tableView.cellForRow(at: [0,0]) as? AppFullscreenHeaderCell else { return }
-            cell.closeButton.alpha = 0
+            self.appFullScreen.closeButton.alpha = 0
             cell.todayCell.topConstraint.constant = 24
             cell.layoutIfNeeded()
             
