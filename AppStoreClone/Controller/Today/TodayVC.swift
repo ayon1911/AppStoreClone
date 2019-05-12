@@ -151,39 +151,7 @@ class TodayVC: BaseListVC, UICollectionViewDelegateFlowLayout {
         gesture.delegate = self
         appFullScreenVC.view.addGestureRecognizer(gesture)
     }
-    
-//    @objc fileprivate func handleDrag(gesture: UIPanGestureRecognizer) {
-//        if gesture.state == .changed {
-//            appFullScreenBeginOffset = appFullScreen.tableView.contentOffset.y
-//        }
-//        if appFullScreen.tableView.contentOffset.y > 0 {
-//            return
-//        }
-//        let traslationY = gesture.translation(in: appFullScreen.view).y
-//
-//
-//        if gesture.state == .changed {
-//            if traslationY > 0 {
-//                let trueOffset = traslationY - appFullScreenBeginOffset
-//                var scale = 1 - trueOffset / 1000
-//                scale = min(1, scale)
-//                scale = max(0.5, scale)
-//                let trasform: CGAffineTransform = .init(scaleX: scale, y: scale)
-//                self.appFullScreen.view.transform = trasform
-//            }
-//        }
-//        else if gesture.state == .ended {
-//            if traslationY > 0 {
-//                handleAppFullScreenDismiss()
-//            }
-//
-//        }
-//    }
-//
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        return true
-//    }
-    
+ 
     fileprivate func setupStartingCellFrame(_ indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
